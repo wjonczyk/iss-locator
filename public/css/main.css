@@ -1,0 +1,111 @@
+/******************************main***********************/
+html body {
+    margin: 0px;
+    padding: 0px;
+    background: #ccd9ff;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    color: black;
+}
+#header h1 {
+    margin: 0px;
+    padding: 30px;
+    font-size: 30px;
+    font-family: Verdana, sans-serif;
+    color: white;
+}
+#header p {
+	color: white;
+}
+#header {
+    background: #002080;
+    height: 100px;
+    clear: both;
+    width: 1004px;
+}
+#header a {
+	text-decoration: none;
+	color: white;
+}
+#content {
+	background: #ccccff;
+	width: 1004px;
+    margin: 0 auto;
+    min-height: 830px;
+}
+#left {
+    width: 224px;
+    min-height: 420px;
+    float: left;
+    overflow: hidden;
+}
+#right {
+    float: left;
+    width: 780px;
+    min-height: 650px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    overflow: hidden;
+}
+#data {
+    margin: 15px;
+}
+#footer {
+    clear: both;
+    height: 50px;
+    width: 100%;
+    background: #002080;
+}
+/**********************************menu left********************/
+
+#list, #list li {
+	display: block;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+#list {
+	width: 180px;
+	padding: 1px 1px 0;
+	background-color: white;
+	border: 1px solid black;
+	margin: 20px 15px;
+}
+#list li {
+	border-bottom: 1px solid white;
+	background: black;
+	height: 30px;
+}
+#list li:hover {
+	background: #AB2222;
+}
+#list #active {
+	background: gray;
+}
+#list a {
+	text-decoration: none;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	display: block;
+	padding: 6px 10px;
+}
+#list a:hover {
+	color: white;
+	display: block;
+}
+
+/******************************* message****************************/
+.ok {
+	color: #02910D;
+}
+.error {
+	color: #F30C0C;
+}
+div#message {
+	width: 80%;
+}
+div#message ul {
+	list-style: none;
+	line-height: 30px;	
+}
