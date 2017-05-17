@@ -13,7 +13,7 @@ class HtmlRenderer implements ViewRendererInterface
      *
      * @var string
      */
-    public $basePath;
+    private $basePath;
     
     /**
      * Array containing parameters to use in views

@@ -1,6 +1,9 @@
 <?php
 namespace Application\Controller;
 
+use Application\Iss\Service\IssService;
+use Application\Lib\ViewRenderer\ViewRendererInterface;
+
 /**
  * action Controller for displaying Space Station location info
  * 
@@ -11,20 +14,20 @@ class SpaceStationController
      *
      * @var IssService
      */
-    public $service;
+    private $service;
     
     /**
      *
-     * @var HtmlRenderer 
+     * @var ViewRendererInterface 
      */
-    public $renderer;
+    private $renderer;
     
     /**
      * 
      * @param IssService $service
-     * @param HtmlRenderer $renderer
+     * @param ViewRendererInterface $renderer
      */
-    public function __construct($service, $renderer)
+    public function __construct(IssService $service, ViewRendererInterface $renderer)
     {
         $this->service = $service;
         $this->renderer = $renderer;
