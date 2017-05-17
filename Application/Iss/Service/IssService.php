@@ -43,7 +43,7 @@ class IssService
         $issLocation = new IssLocation();
         $issLocation->setStatus($geoLocation['status']);
         $issLocation->setLatlng($latlng);
-        if ($geoLocation['status'] == IssLocation::STATUS_OK && !empty($geoLocation['results'])) {
+        if ($issLocation->isStatusOk() && !empty($geoLocation['results'])) {
             $issLocation->setName($geoLocation['results'][0]['formatted_address']);
         }
         return $issLocation;

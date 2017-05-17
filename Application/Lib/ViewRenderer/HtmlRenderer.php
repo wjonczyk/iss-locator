@@ -5,14 +5,20 @@ use Application\Lib\ViewRenderer\ViewRendererInterface;
 
 class HtmlRenderer implements ViewRendererInterface
 {
+    public $basePath;
     public $value;
+    
+    public function __construct($basePath)
+    {
+        $this->basePath = $basePath;
+    }
     
     public function render($location)
     {
-        if (!file_exists($location)) {
+        if (!file_exists($this->basePath . $location)) {
             throw new \Exception("No template set in Controller");
         }
-        include $location;
+        include $this->basePath . $location;
     }
     
     public function addValue($key, $value)

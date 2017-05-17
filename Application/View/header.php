@@ -18,7 +18,7 @@
 				<div id="menu">
 					<ul id="list">
 						<li id="active">
-							<a href="index.php?action=showAction">Home</a>
+							<a href="index.php?action=show">Home</a>
 						</li>
 					</ul>
 				</div>

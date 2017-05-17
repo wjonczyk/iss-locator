@@ -38,4 +38,9 @@ class IssLocation
     {
         return $this->latlng;
     }
+    
+    public function isStatusOk()
+    {
+        return $this->status == self::STATUS_OK;
+    }
 }

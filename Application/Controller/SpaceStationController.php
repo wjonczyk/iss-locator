@@ -1,8 +1,6 @@
 <?php
 namespace Application\Controller;
 
-use Application\Config\AppConfig;
-
 class SpaceStationController
 {
     public $service;
@@ -18,6 +16,6 @@ class SpaceStationController
     {
         $locationName = $this->service->getCurrentIssLocation();
         $this->renderer->addValue('location', $locationName);
-        $this->renderer->render(AppConfig::getBasePath(). '/Application/View/showAction.php');
+        $this->renderer->render('/Application/View/show.php');
     }
 }
