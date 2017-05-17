@@ -3,6 +3,8 @@ namespace Application\Config;
 
 class AppConfig
 {
+    protected static $basePath;
+    
     public static function getConfig()
     {
         return [
@@ -12,10 +14,20 @@ class AppConfig
             'geocode' => [
                 'api_url' => 'https://maps.googleapis.com/maps/api/geocode'
             ],
-            'defaultAction' => 'show',
+            'defaultAction' => 'showAction',
             'allowedActions' => [
-                'show'
+                'showAction'
             ]
         ];
+    }
+    
+    public static function setBasePath($basePath)
+    {
+        static::$basePath = $basePath;
+    }
+    
+    public static function getBasePath()
+    {
+        return static::$basePath;
     }
 }

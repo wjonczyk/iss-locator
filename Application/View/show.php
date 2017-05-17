@@ -1,1 +1,0 @@
-<?php echo "Stacja ISS aktualnie znajduje się nad:  $this->value"; ?>

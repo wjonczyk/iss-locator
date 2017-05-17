@@ -3,11 +3,11 @@ namespace Application\Iss\Service;
 
 use Application\Iss\Client\IssClientInterface;
 use Application\GeoCode\Client\GeoCodeClientInterface;
+use Application\Iss\IssLocation;
 
 class IssService
 {
     const ISS_NAME = 'iss';
-    const STATUS_OK = 'OK';
 
     private $issClient;
     private $geoCodeClient;
@@ -18,7 +18,7 @@ class IssService
         $this->geoCodeClient = $geoCodeClient;
     }
     
-    public function getCurrentIssLocationName()
+    public function getCurrentIssLocation()
     {
         $satellites = $this->issClient->getSatellites();
         $issId = null;
@@ -28,18 +28,24 @@ class IssService
             }
         }
         if (is_null($issId)) {
-            throw new Exception("Couldn't find ISS in service", 10);
+            throw new \Exception("Couldn't find ISS in service", 10);
         }
         $satelliteInformation = $this->issClient->getSatelliteById($issId);
         
         $latlng = $satelliteInformation['latitude'] . ',' . $satelliteInformation['longitude'];
         
+        /*
+         * Here can be added some caching mechanism to check if we already
+         *  have name of the location for specific $latlng value
+         */
+        
         $geoLocation = $this->geoCodeClient->getLocationByCoordinates($latlng);
-        if ($geoLocation['status'] == self::STATUS_OK) {
-            return $geoLocation['results'][0]['formatted_address'];
-        } else {
-            throw new \Exception("Nie można wskazać najbliższego miejsca adresowego według geocode. <br />"
-                . "Stacja ISS znajduje się nad współrzędnymi $latlng - szerokości i długości geograficznej", 20);
+        $issLocation = new IssLocation();
+        $issLocation->setStatus($geoLocation['status']);
+        $issLocation->setLatlng($latlng);
+        if ($geoLocation['status'] == IssLocation::STATUS_OK && !empty($geoLocation['results'])) {
+            $issLocation->setName($geoLocation['results'][0]['formatted_address']);
         }
+        return $issLocation;
     }
 }
