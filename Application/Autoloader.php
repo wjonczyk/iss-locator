@@ -1,6 +1,11 @@
 <?php
 namespace Application;
 
+/**
+ * PSR-0 autoloading function used in application
+ * 
+ * @param string $className
+ */
 function autoload($className)
 {
     $className = ltrim($className, '\\');

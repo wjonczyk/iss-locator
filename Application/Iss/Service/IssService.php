@@ -5,19 +5,47 @@ use Application\Iss\Client\IssClientInterface;
 use Application\GeoCode\Client\GeoCodeClientInterface;
 use Application\Iss\IssLocation;
 
+/**
+ * Service for retrieving Space Station location using APIs
+ */
 class IssService
 {
+    /**
+     * @var string
+     */
     const ISS_NAME = 'iss';
 
+    /**
+     *
+     * @var IssClientInterface 
+     */
     private $issClient;
+    
+    /**
+     *
+     * @var GeoCodeClientInterface 
+     */
     private $geoCodeClient;
     
+    /**
+     * 
+     * @param IssClientInterface $issClient
+     * @param GeoCodeClientInterface $geoCodeClient
+     */
     public function __construct(IssClientInterface $issClient, GeoCodeClientInterface $geoCodeClient)
     {
         $this->issClient = $issClient;
         $this->geoCodeClient = $geoCodeClient;
     }
     
+    /**
+     * Main method to retrieve Space Stataion coordinates from ISS API
+     * and based on them get human readable location information 
+     * from GeoCode API
+     * 
+     * @return IssLocation
+     * @throws \Exception
+     */
     public function getCurrentIssLocation()
     {
         $satellites = $this->issClient->getSatellites();

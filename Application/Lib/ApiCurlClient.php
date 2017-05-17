@@ -1,12 +1,40 @@
 <?php
 namespace Application\Lib;
 
+/**
+ * Basic client used to connect with APIs using curl.
+ * Can be further expanded with funcionality 
+ * 
+ */
 class ApiCurlClient
 {
+    /**
+     *
+     * @var string
+     */
     public $response;
+    
+    /**
+     *
+     * @var int
+     */
     public $status;
+    
+    /**
+     *
+     * @var string
+     */
     public $error;
     
+    /**
+     * Method initializng connection with requested location using curl.
+     * Accepts array of options for connection, tries to execute request
+     * and if succesfull returns response.
+     * 
+     * @param string $url
+     * @param array $options
+     * @return string
+     */
     public function call($url, array $options)
     {
         $session = curl_init();

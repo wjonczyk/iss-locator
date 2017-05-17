@@ -10,7 +10,12 @@ use Application\Lib\ApiCurlClient;
 use Application\Iss\Service\IssService;
 use Application\Lib\ViewRenderer\HtmlRenderer;
 
-
+/**
+ * This is the main Controller dispatching request
+ * Based on action it loads required clients and instantiates IssService
+ * for the action Controller. Action is requested and if no errors occur 
+ * result is rendered
+ */
 try {
     $appConfig = AppConfig::getConfig();
     $action = isset($_GET['action']) ? $_GET['action'] : $appConfig['defaultAction'];

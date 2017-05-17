@@ -1,8 +1,15 @@
 <?php
 namespace Application\Config;
 
+/**
+ * Contains default API adresses to which apllication connects
+ * 
+ */
 class AppConfig
-{    
+{
+    /**
+     * @return array
+     */
     public static function getConfig()
     {
         return [
